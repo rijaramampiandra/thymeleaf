@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title th:text="#{view.index.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+<script th:src="@{/resources/js/jquery-latest.js}"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/gestion_inscription.js}"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="container">
+		<form class="form-horizontal" th:if="${edit}" th:action="@{/userAddOrEdit/saveedit}"
+			th:object="${user}" method="post">
+			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{{date}}" />
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="nom" th:text="#{nom}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" th:field="*{nom}" readonly="readonly" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="prenom" th:text="#{prenom}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" th:field="*{prenom}" readonly="readonly" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="password" th:text="#{password}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="password" th:value="${password}" th:field="*{password}"
+						readonly="readonly" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="email" th:text="#{email}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" th:field="*{email}" readonly="readonly" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="actif" th:text="#{actif}"></label>
+				<div class="col-md-4">
+					<select class="form-control" th:field="*{actif}">
+						<option th:each="obj : ${choixActifOuNon}" th:value="${obj}" th:text="#{${'choix.' + obj}}"></option>
+					</select>
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default" th:text="#{save}"></button>
+				</div>
+			</div>
+		</form>
+		<form class="form-horizontal" th:if="${add}" th:action="@{/userAddOrEdit/addAction}"
+			th:object="${user}" method="post">
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="nom" th:text="#{nom}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" th:field="*{nom}" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group" th:if="${errorNom}">
+				<div class="col-sm-offset-3 form-control-error col-md-4" th:utext="${error}"></div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="prenom" th:text="#{prenom}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" th:field="*{prenom}" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group" th:if="${errorPrenom}">
+				<div class="col-sm-offset-3 form-control-error col-md-4" th:utext="${error}"></div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="password" th:text="#{password}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="password" th:field="*{password}" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group" th:if="${errorPassword}">
+				<div class="col-sm-offset-3 form-control-error col-md-4" th:utext="${error}"></div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="email" th:text="#{email}"></label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" th:field="*{email}" />
+				</div>
+				<div class="col-md-6">&nbsp;</div>
+			</div>
+			<div class="form-group" th:if="${errorEmail}">
+				<div class="col-sm-offset-3 form-control-error col-md-4" th:utext="${error}"></div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-md-10">
+					<!-- reCAPTCHA -->
+					<div class="g-recaptcha" data-sitekey="6Lej3CcTAAAAAJvSzdjuESHYcQT0UWT3UtTfOMBk"></div>
+				</div>
+			</div>
+			<div class="form-group" th:if="${errorCaptcha}">
+				<div class="col-sm-offset-3 form-control-error col-md-4" th:utext="${error}"></div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default" th:text="#{save}"></button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

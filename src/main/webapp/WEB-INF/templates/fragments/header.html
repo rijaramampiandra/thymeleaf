@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}" />
+<script th:src="@{/resources/js/jquery-latest.js}"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+	<!-- Navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a th:if="${page == '/'}" class="navbar-brand active" th:text="#{view.index.title}"
+					th:href="@{/}"></a>
+				<a th:unless="${page == '/'}" class="navbar-brand active" th:text="#{view.index.title}"
+					th:href="@{/}"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li th:classappend="${page == '/userListe' ? 'active' : ''}"><a
+							th:text="#{user.admin}" th:href="@{/userListe}"></a></li>
+					<li th:classappend="${page == '/userAddOrEdit' ? 'active' : ''}"><a
+							th:text="#{ajout.user}" th:href="@{/userAddOrEdit/ajouter}"></a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+</body>
+</html>

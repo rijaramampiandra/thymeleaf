@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title th:text="#{view.index.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+<script th:src="@{/resources/js/jquery-latest.js}"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="container">
+		<div class="row">
+			<table class="table table-striped table-bordered">
+				<tr>
+					<th>#</th>
+					<th class="center" th:text="#{prenom}"></th>
+					<th class="center" th:text="#{nom}"></th>
+					<th class="center" th:text="#{email}"></th>
+					<th class="center" th:text="#{actif}"></th>
+					<th class="center" th:text="#{date.creation}"></th>
+					<th class="center" th:text="#{edit}"></th>
+				</tr>
+				<tbody>
+					<tr th:each="row,rowStat : ${listUser}">
+						<td th:text="${rowStat.count}"></td>
+						<td th:text="${row.prenom}"></td>
+						<td th:text="${row.nom}"></td>
+						<td th:text="${row.email}"></td>
+						<td class="center" th:if="${row.actif == 1}"><img th:src="@{/resources/images/checked.png}" /></td>
+						<td class="center" th:unless="${row.actif == 1}"><img th:src="@{/resources/images/unchecked.png}" /></td>
+						<td class="center" th:text="*{#dates.format(row.date, 'dd-MM-yyyy')}"></td>
+						<td class="center"><a th:href="@{/userAddOrEdit/edit(id=${row.id})}" th:text="#{edit}"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
