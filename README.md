@@ -33,6 +33,12 @@ Techno :
 
 http://localhost:8080/gestion_inscription
 
+Code analyzer :
+- Checkstyle.
+
+Render :
+- /gestion_inscription/src/main/webapp/resources/images/print-screen
+
 Documentation :
 - http://getbootstrap.com/css/
 - www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html

@@ -23,7 +23,11 @@ public class ErrorThrowablePageControlleur {
 	/**
 	 * Appel de la page d'index html.
 	 * 
-	 * @return the index.html.
+	 * @param request
+	 *            the req.
+	 * @param model
+	 *            the model.
+	 * @return the page.
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getRequest(HttpServletRequest request, ModelMap model) {

@@ -21,10 +21,12 @@ public class SuccessPageControlleur {
 	/**
 	 * Appel de la page succés.
 	 * 
-	 * @return the index.html.
+	 * @param map
+	 *            the model.
+	 * @return the success page.
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getRequest(ModelMap m) {
+	public ModelAndView getRequest(ModelMap map) {
 		ModelAndView model = new ModelAndView(ViewName.PAGE_SUCCESS_PAGE);
 		return model;
 	}

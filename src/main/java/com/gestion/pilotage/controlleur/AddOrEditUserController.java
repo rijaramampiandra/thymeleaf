@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gestion.pilotage.dao.UserDAOImpl;
 import com.gestion.pilotage.enums.ChoixEnum;
 import com.gestion.pilotage.model.User;
 import com.gestion.pilotage.service.UserService;

@@ -56,8 +56,8 @@ public interface UserService {
 	/**
 	 * Obtenir le client.
 	 * 
-	 * @param id
-	 *            the id.
+	 * @param criteria
+	 *            the criteria.
 	 * @return the user.
 	 */
 	List<User> findByCriteria(User criteria);

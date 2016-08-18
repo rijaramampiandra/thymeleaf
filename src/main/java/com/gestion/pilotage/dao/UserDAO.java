@@ -15,9 +15,10 @@ public interface UserDAO {
 	/**
 	 * Ajout user.
 	 * 
-	 * @param p
+	 * @param user
+	 *            the user.
 	 */
-	public void addUser(User p);
+	public void addUser(User user);
 
 	/**
 	 * Maj user.
@@ -54,8 +55,8 @@ public interface UserDAO {
 	/**
 	 * Obtenir le client.
 	 * 
-	 * @param id
-	 *            the id.
+	 * @param criteria
+	 *            the criteria.
 	 * @return the user.
 	 */
 	List<User> findByCriteria(User criteria);

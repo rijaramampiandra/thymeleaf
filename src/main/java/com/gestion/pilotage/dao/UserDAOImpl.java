@@ -2,7 +2,6 @@ package com.gestion.pilotage.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
@@ -11,10 +10,8 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import org.thymeleaf.standard.expression.Assignation;
 
 import com.gestion.pilotage.model.User;
-import com.gestion.pilotage.utils.DateUtils;
 
 /**
  * DAO implementation.
