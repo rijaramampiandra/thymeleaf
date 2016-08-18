@@ -1,4 +1,4 @@
-# thymeleaf
+# thymeleaf + spring + recaptcha (google)
 contact : rijaramampiandra@gmail.com
 
 Build project :
