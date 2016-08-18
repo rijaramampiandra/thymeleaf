@@ -16,9 +16,16 @@ Site :
 Techno :
 - Thymeleaf
 - Spring
-- Recaptcha de google.
+- Recaptcha de google
+- Password crypted with : SHA-256
 
 Server :
 - Tom cat 6 : http://www-eu.apache.org/dist/tomcat/tomcat-6/v6.0.45/bin/apache-tomcat-6.0.45.zip
 
 http://localhost:8080/gestion_inscription
+
+Base config :
+- spring.xml > jdbc:mysql://localhost:3306/client_connexion
+
+Config SMTP server:
+- config.properties file

@@ -140,19 +140,19 @@
 			<version>${commons-lang-version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.google.code.maven-play-plugin.net.tanesha.recaptcha4j/recaptcha4j -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.google.code.maven-play-plugin.net.tanesha.recaptcha4j</groupId> -->
-<!-- 			<artifactId>recaptcha4j</artifactId> -->
-<!-- 			<version>0.0.8</version> -->
-<!-- 		</dependency> -->
-
 		<!-- JSON Library -->
 		<!-- http://mvnrepository.com/artifact/org.glassfish/javax.json -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.json</artifactId>
 			<version>1.0.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 	</dependencies>

@@ -5,13 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -36,6 +34,8 @@ public class User implements Serializable {
 	private Integer id;
 
 	private String email;
+	@Transient
+	private String emailValidation;
 	private String nom;
 	private String prenom;
 	private String password;
@@ -97,6 +97,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmailValidation() {
+		return emailValidation;
+	}
+
+	public void setEmailValidation(String emailValidation) {
+		this.emailValidation = emailValidation;
 	}
 
 	@Override

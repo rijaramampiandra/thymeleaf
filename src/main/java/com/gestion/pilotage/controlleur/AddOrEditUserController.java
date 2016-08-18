@@ -25,6 +25,7 @@ import com.gestion.pilotage.enums.ChoixEnum;
 import com.gestion.pilotage.model.User;
 import com.gestion.pilotage.service.UserService;
 import com.gestion.pilotage.utils.EncryptionPasswordUtils;
+import com.gestion.pilotage.utils.SendMailSslUtils;
 import com.gestion.pilotage.utils.VerifyUtils;
 import com.gestion.pilotage.utils.ViewName;
 import com.gestion.pilotage.validator.InputValidator;
@@ -39,7 +40,7 @@ import com.gestion.pilotage.validator.InputValidator;
 @RequestMapping(value = ViewName.PAGE_ADD_OR_EDIT_DEVELOPPEUR)
 public class AddOrEditUserController {
 
-	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(AddOrEditUserController.class);
 
 	@Autowired(required = true)
 	@Qualifier(value = "userService")
@@ -108,6 +109,11 @@ public class AddOrEditUserController {
 			logger.error("Email invalide!");
 			return generateViewError(user, "errorEmail", "Email invalide!");
 		}
+		
+		if (!user.getEmail().equals(user.getEmailValidation())) {
+			logger.error("Email ne matchent pas!");
+			return generateViewError(user, "errorEmail", "Les emails ne matchent pas!");
+		}
 
 		User dev = new User();
 		dev.setEmail(user.getEmail());
@@ -139,6 +145,7 @@ public class AddOrEditUserController {
 		if (user.getNom() != null) {
 			user.setNom(user.getNom().toUpperCase());
 		}
+		SendMailSslUtils.sendEmail(user.getEmail());
 		userService.addUser(user);
 		logger.info("Insertion avec succès!" + user);
 
