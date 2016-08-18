@@ -3,6 +3,7 @@ contact : rijaramampiandra@gmail.com
 
 Build project :
 - Maven 3.0.4 or UP
+- Link : https://archive.apache.org/dist/maven/maven-3/3.0.4/binaries/apache-maven-3.0.4-bin.zip
 
 JDK :
 - Version 6 or 7
@@ -14,6 +15,7 @@ Deploiement server :
 Config database connexion :
 - /gestion_inscription/src/main/resources/spring.xml (jdbc:mysql://localhost:3306/client_connexion, password, user)
 - Database : MySQL
+- Link : http://dev.mysql.com/downloads/
 - Table script : user.sql
 
 Config STMP connexion :
@@ -25,7 +27,7 @@ Site :
 Techno :
 - Thymeleaf
 - Spring
-- Recaptcha de google
+- Recaptcha google
 - Password crypted with : SHA-256
 - hibernate
 - javax.mail
